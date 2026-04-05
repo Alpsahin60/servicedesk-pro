@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ServiceDesk Pro 🎫
 
-## Getting Started
+A professional, full-stack IT Helpdesk and Ticketing System built with modern web technologies. This project demonstrates robust role-based access control, relational database management, and a premium "glassmorphism" user interface.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Role-Based Access Control (RBAC):** Three distinct roles (`USER`, `AGENT`, `ADMIN`) with protected routes and restricted data access.
+- **Ticket Management:** Create, view, and manage IT tickets seamlessly. Includes details like status, priority, and category grouping.
+- **Admin Dashboard:** Centralized view for managing users and system metadata.
+- **Premium UI:** Deep-dark mode aesthetics with custom Tailwind v4 configurations, smooth animations, and loading states.
+- **Modern Stack:** Built on Next.js 15 (App Router), Server Actions, Prisma ORM, and NextAuth.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔑 Demo Access (Login Credentials)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To test the application, you can use the following pre-configured demo accounts once you've seeded the database. 
+**The password for all accounts is: `password123`**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Role | Email | Capabilities |
+| :--- | :--- | :--- |
+| **Admin** | `admin@example.com` | Full access. Can manage users, categories, and all tickets. |
+| **Agent** | `agent@example.com` | Can view and process all helpdesk tickets. |
+| **User** | `user@example.com` | Can only create and view their own personal tickets. |
 
-## Learn More
+## 🛠️ Getting Started Locally
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Alpsahin60/servicedesk-pro.git
+   cd servicedesk-pro
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Initialize the Database & Demo Data:**
+   ```bash
+   npx prisma db push
+   npx prisma db seed
+   ```
 
-## Deploy on Vercel
+4. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) to view the application!
