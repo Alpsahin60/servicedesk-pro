@@ -1,48 +1,41 @@
-# ServiceDesk Pro 🎫
+# ServiceDesk Pro
 
-A professional, full-stack IT Helpdesk and Ticketing System built with modern web technologies. This project demonstrates robust role-based access control, relational database management, and a premium "glassmorphism" user interface.
+A professional, production-ready fullstack IT ticket system built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**, and **Prisma**. 
 
-## 🚀 Features
+## Features
+- **Role-Based Access Control (RBAC):** NextAuth integration with separate permissions for Admin, Agent, and User.
+- **Ticket Management:** Create, view, and manage support tickets with statuses, priorities, and assigned categories.
+- **Admin Dashboard:** Overview of users and categories.
+- **Premium UI:** Deep dark mode design with glassmorphism effects and Lucide icons.
 
-- **Role-Based Access Control (RBAC):** Three distinct roles (`USER`, `AGENT`, `ADMIN`) with protected routes and restricted data access.
-- **Ticket Management:** Create, view, and manage IT tickets seamlessly. Includes details like status, priority, and category grouping.
-- **Admin Dashboard:** Centralized view for managing users and system metadata.
-- **Premium UI:** Deep-dark mode aesthetics with custom Tailwind v4 configurations, smooth animations, and loading states.
-- **Modern Stack:** Built on Next.js 15 (App Router), Server Actions, Prisma ORM, and NextAuth.js.
+## Demo Login Credentials
 
-## 🔑 Demo Access (Login Credentials)
+The local database is pre-seeded with the following demo accounts. The password for all accounts is **`password123`**.
 
-To test the application, you can use the following pre-configured demo accounts once you've seeded the database. 
-**The password for all accounts is: `password123`**
+| Role  | Email |
+| ------------- | ------------- |
+| **Admin**  | `admin@example.com` |
+| **Agent**  | `agent@example.com` |
+| **User**  | `user@example.com` |
 
-| Role | Email | Capabilities |
-| :--- | :--- | :--- |
-| **Admin** | `admin@example.com` | Full access. Can manage users, categories, and all tickets. |
-| **Agent** | `agent@example.com` | Can view and process all helpdesk tickets. |
-| **User** | `user@example.com` | Can only create and view their own personal tickets. |
+> **Note:** You can view and modify these demo accounts in the `prisma/seed.ts` file.
 
-## 🛠️ Getting Started Locally
+## Getting Started
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Alpsahin60/servicedesk-pro.git
-   cd servicedesk-pro
-   ```
-
-2. **Install dependencies:**
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. **Initialize the Database & Demo Data:**
+2. Initialize the local SQLite database and seed the data:
    ```bash
    npx prisma db push
    npx prisma db seed
    ```
 
-4. **Start the Development Server:**
+3. Run the complete Next.js development server:
    ```bash
    npm run dev
    ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application!
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
