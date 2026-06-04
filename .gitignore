@@ -44,3 +44,9 @@ next-env.d.ts
 
 # Claude Code local config / sessions
 .claude/
+
+# local SQLite databases (Prisma dev DB and journals)
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
