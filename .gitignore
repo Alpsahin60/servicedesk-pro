@@ -42,9 +42,6 @@ next-env.d.ts
 
 /app/generated/prisma
 
-# Claude Code local config / sessions
-.claude/
-
 # local SQLite databases (Prisma dev DB and journals)
 *.db
 *.sqlite
