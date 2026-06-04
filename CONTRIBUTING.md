@@ -21,23 +21,42 @@ For a feature-level overview, see the project [README.md](./README.md).
 - **Database:** Prisma 6 (SQLite for local dev, `prisma/dev.db`)
 - **Auth:** NextAuth v4 with `@next-auth/prisma-adapter`
 - **Password hashing:** bcryptjs
-- **Forms:** React Hook Form + Zod
 - **Icons:** Lucide
+
+> `react-hook-form` and `zod` are present in `package.json` but not yet used in
+> source — they're staged for an upcoming validation pass on the ticket form
+> and Server Action. See the README "Status / TODO" section.
 
 ---
 
 ## 3. Project Structure
 
 ```text
+app/
+  api/auth/[...nextauth]/  # NextAuth handler
+  admin/                   # Admin page (read-only users + categories)
+  login/                   # Sign-in page
+  tickets/                 # List, detail, new (with Server Action)
+  layout.tsx               # Root layout (dark mode, fonts, providers)
+  page.tsx                 # Dashboard
+  providers.tsx            # NextAuth SessionProvider wrapper
+  globals.css              # Tailwind v4 base + design tokens
+  loading.tsx              # Global loading UI
+lib/
+  auth.ts                  # NextAuth options (Credentials + Prisma adapter)
+  prisma.ts                # Prisma client singleton
 prisma/
-  schema.prisma   # Database schema (User, Ticket, Category, …)
-  seed.ts         # Demo account + sample data seeder
-  dev.db          # Local SQLite (gitignored)
-src/
-  app/            # App Router pages, layouts, route handlers
-  components/     # Shared UI components
-  lib/            # DB client, auth helpers, utilities
+  schema.prisma            # User, Ticket, Category, Comment, NextAuth tables
+  seed.ts                  # Demo account + sample data seeder
+  dev.db                   # Local SQLite (currently tracked for zero-setup demo)
+types/
+  next-auth.d.ts           # Session/User type augmentation
 ```
+
+> There is currently no `src/` directory and no shared `components/` folder —
+> the routes are deliberately small and inline their JSX. A `components/`
+> folder will be introduced once a UI element is reused across more than one
+> page.
 
 ---
 
@@ -85,11 +104,13 @@ npm run dev               # http://localhost:3000
 ## 5. Coding Conventions
 
 - TypeScript strict mode; avoid `any` unless documented
-- Server components by default; `"use client"` only where interactivity is required
-- Route handlers under `src/app/api/*` use Zod schemas at the boundary
-- Database access goes through a single Prisma client (`src/lib/db.ts` or equivalent)
+- Server Components by default; `"use client"` only where interactivity is required
+- Route handlers and Server Actions should validate input at the boundary —
+  Zod is the intended tool (see "Status / TODO" in the README; not yet wired up)
+- Database access goes through the single Prisma client in `lib/prisma.ts`
 - Passwords hashed with bcryptjs — never store plaintext
-- Tailwind utility-first; component-level abstraction lives in `src/components/`
+- Tailwind utility-first; shared UI primitives will live in a future
+  `components/` directory once duplication justifies it
 - Commit messages follow Conventional Commits: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`, `style:`, `test:`, `perf:`, `security:`
 
 ---
